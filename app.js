@@ -84,7 +84,7 @@ window.addEventListener('load', () => {
     if (!navigator.onLine) {
       // Перенаправляем на offline.html если нет соединения
       if (!window.location.pathname.includes('offline.html')) {
-        window.location.href = '/offline.html';
+        window.location.href = './offline.html';
       }
     }
   });
@@ -92,7 +92,7 @@ window.addEventListener('load', () => {
   // Отслеживаем изменения соединения
   window.addEventListener('offline', () => {
     if (!window.location.pathname.includes('offline.html')) {
-      window.location.href = '/offline.html';
+      window.location.href = './offline.html';
     }
   });
   
