@@ -40,7 +40,7 @@ self.addEventListener('fetch', event => {
           
 //           // Для навигационных запросов возвращаем offline.html
 //           if (event.request.mode === 'navigate') {
-//             return caches.match('/offline.html');
+//             return caches.match('./offline.html');
 //           }
           
 //           // Пробуем выполнить сетевой запрос
