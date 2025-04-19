@@ -82,3 +82,26 @@ function promptInstall() {
         });
     }
 }
+
+// Проверка соединения при загрузке
+window.addEventListener('load', () => {
+    if (!navigator.onLine) {
+      // Перенаправляем на offline.html если нет соединения
+      if (!window.location.pathname.includes('offline.html')) {
+        window.location.href = '/offline.html';
+      }
+    }
+  });
+  
+  // Отслеживаем изменения соединения
+  window.addEventListener('offline', () => {
+    if (!window.location.pathname.includes('offline.html')) {
+      window.location.href = '/offline.html';
+    }
+  });
+  
+  window.addEventListener('online', () => {
+    if (window.location.pathname.includes('offline.html')) {
+      window.location.href = '/';
+    }
+  });

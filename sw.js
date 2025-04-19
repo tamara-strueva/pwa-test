@@ -1,8 +1,8 @@
 const CACHE_NAME = 'visiting-card-cache-v1';
 const urlsToCache = [
+  '/offline.html',
   '/',
   '/index.html',
-  '/offline.html',
   '/styles.css',
   '/app.js',
   '/images/photo.jpg',
