@@ -24,32 +24,40 @@ self.addEventListener('install', event => {
 self.addEventListener('fetch', event => {
     event.respondWith(
       caches.match(event.request)
-        .then(response => {
-          // Возвращаем кэшированный ресурс, если он есть
-          if (response) {
-            return response;
-          }
-          
-          // Для навигационных запросов возвращаем offline.html
-          if (event.request.mode === 'navigate') {
-            return caches.match('/offline.html');
-          }
-          
-          // Пробуем выполнить сетевой запрос
-          return fetch(event.request).catch(() => {
-            // Если это не навигационный запрос, но ресурс не найден в кэше
-            // Можно вернуть заглушку или ничего не возвращать
-            return new Response('Оффлайн-режим', {
-              status: 503,
-              statusText: 'Service Unavailable',
-              headers: new Headers({
-                'Content-Type': 'text/plain'
-              })
-            });
-          });
-        })
+        .then(response => response || fetch(event.request))
+        .catch(() => caches.match('/offline.html')) // Fallback
     );
   });
+
+// self.addEventListener('fetch', event => {
+//     event.respondWith(
+//       caches.match(event.request)
+//         .then(response => {
+//           // Возвращаем кэшированный ресурс, если он есть
+//           if (response) {
+//             return response;
+//           }
+          
+//           // Для навигационных запросов возвращаем offline.html
+//           if (event.request.mode === 'navigate') {
+//             return caches.match('/offline.html');
+//           }
+          
+//           // Пробуем выполнить сетевой запрос
+//           return fetch(event.request).catch(() => {
+//             // Если это не навигационный запрос, но ресурс не найден в кэше
+//             // Можно вернуть заглушку или ничего не возвращать
+//             return new Response('Оффлайн-режим', {
+//               status: 503,
+//               statusText: 'Service Unavailable',
+//               headers: new Headers({
+//                 'Content-Type': 'text/plain'
+//               })
+//             });
+//           });
+//         })
+//     );
+//   });
 
 self.addEventListener('activate', event => {
   const cacheWhitelist = [CACHE_NAME];
