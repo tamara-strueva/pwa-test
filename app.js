@@ -105,3 +105,11 @@ window.addEventListener('load', () => {
       window.location.href = '/';
     }
   });
+
+window.addEventListener('online', () => {
+  console.log('You are now online!');
+});
+
+window.addEventListener('offline', () => {
+  console.log('You are now offline!');
+});
