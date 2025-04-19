@@ -2,7 +2,7 @@
     "name": "Моя визитка",
     "short_name": "Визитка",
     "start_url": ".",
-    "offline_url": "/offline.html",
+    "offline_url": "/pwa-test/offline.html",
     "display": "standalone",
     "background_color": "#f5f5f5",
     "theme_color": "#008000",
