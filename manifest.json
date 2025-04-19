@@ -1,7 +1,7 @@
 {
     "name": "Моя визитка",
     "short_name": "Визитка",
-    "start_url": "/index.html",
+    "start_url": ".",
     "offline_url": "/offline.html",
     "display": "standalone",
     "background_color": "#f5f5f5",
